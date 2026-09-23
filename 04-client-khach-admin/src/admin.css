@@ -1,0 +1,220 @@
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
+@theme {
+  --color-zinc-950: #0a0610;
+  --color-zinc-900: #16101c;
+  --color-zinc-800: #3a2030;
+  --color-zinc-700: #5c3548;
+  --color-zinc-600: #7a4a5c;
+  --color-zinc-500: #c9b8c0;
+  --color-zinc-400: #ddd0d6;
+  --color-zinc-300: #f2eaee;
+  --color-zinc-200: #faf6f8;
+  --color-zinc-100: #fffdfc;
+  --color-yellow-400: #f5c518;
+  --color-yellow-300: #ffe066;
+  --color-red-400: #ff6b81;
+  --color-red-500: #e31d3c;
+  --color-red-950: #3a0a14;
+  --color-red-200: #ffc9d2;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]),
+select,
+textarea {
+  background-color: rgba(10, 6, 16, 0.88);
+  color: #fffdfc;
+  caret-color: #f5c518;
+  border-color: rgba(245, 197, 24, 0.22);
+}
+
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+}
+.admin-aside {
+  display: flex;
+  width: 15rem;
+  flex-shrink: 0;
+  flex-direction: column;
+  border-right: 1px solid rgba(245, 197, 24, 0.16);
+  background: rgba(12, 4, 10, 0.78);
+  backdrop-filter: blur(18px);
+}
+.admin-brand {
+  border-bottom: 1px solid rgba(227, 29, 60, 0.28);
+  padding: 1.25rem 1.25rem;
+}
+.admin-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+.admin-brand-row:hover .admin-brand-title {
+  color: #f5c518;
+}
+.admin-brand-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.6rem;
+  object-fit: cover;
+  border: 2px solid #f5c518;
+}
+.admin-brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(227, 29, 60, 0.45);
+}
+.admin-brand-sub {
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+.admin-nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+}
+.admin-nav-item,
+.admin-nav-on {
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.admin-nav-item {
+  color: rgba(255, 253, 252, 0.78);
+}
+.admin-nav-item:hover {
+  background: rgba(227, 29, 60, 0.16);
+  color: #fff;
+}
+.admin-nav-on {
+  background: linear-gradient(90deg, #e31d3c, #c41e3a);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(227, 29, 60, 0.4), inset 3px 0 0 #f5c518;
+}
+.admin-aside-foot {
+  border-top: 1px solid rgba(245, 197, 24, 0.14);
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+.admin-user {
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+.admin-logout {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.admin-logout:hover {
+  border-color: #f5c518;
+  background: rgba(245, 197, 24, 0.12);
+  color: #f5c518;
+}
+.admin-aside-foot .theme-toggle-btn {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+.admin-main {
+  min-width: 0;
+  flex: 1;
+  overflow: auto;
+  padding: 1.5rem;
+  animation: admin-in 0.45s ease both;
+}
+.admin-main table tbody tr {
+  transition: background 0.2s ease;
+}
+.admin-main table tbody tr:hover {
+  background: rgba(227, 29, 60, 0.12);
+}
+button.bg-yellow-400,
+a.bg-yellow-400 {
+  box-shadow: 0 0 16px rgba(245, 197, 24, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+button.bg-yellow-400:hover,
+a.bg-yellow-400:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 26px rgba(245, 197, 24, 0.55);
+}
+@keyframes admin-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-main,
+  .admin-nav-item,
+  .admin-nav-on,
+  button.bg-yellow-400 {
+    animation: none;
+    transition: none;
+  }
+}
+
+html[data-theme="light"] {
+  --color-zinc-950: #fffdfc;
+  --color-zinc-900: #f4ecef;
+  --color-zinc-800: #e4d0d8;
+  --color-zinc-700: #cbb4bc;
+  --color-zinc-600: #8a6574;
+  --color-zinc-500: #6b4554;
+  --color-zinc-400: #4a3040;
+  --color-zinc-300: #2e1c26;
+  --color-zinc-200: #1a1014;
+  --color-zinc-100: #1a1014;
+  --color-red-950: #fde8ec;
+  --color-red-200: #9b1730;
+}
+html[data-theme="light"] .admin-shell {
+  color: #1a1014;
+}
+html[data-theme="light"] .admin-aside {
+  background: rgba(255, 253, 252, 0.9);
+  border-color: rgba(227, 29, 60, 0.16);
+}
+html[data-theme="light"] .admin-brand-title {
+  color: #1a1014;
+  text-shadow: none;
+}
+html[data-theme="light"] .admin-brand-sub,
+html[data-theme="light"] .admin-user {
+  color: rgba(26, 16, 20, 0.62);
+}
+html[data-theme="light"] .admin-nav-item {
+  color: rgba(26, 16, 20, 0.82);
+}
+html[data-theme="light"] .admin-nav-item:hover {
+  color: #1a1014;
+}
+html[data-theme="light"] .admin-logout {
+  color: #1a1014;
+  border-color: rgba(26, 16, 20, 0.22);
+}
+html[data-theme="light"] .admin-aside-foot input,
+html[data-theme="light"] .admin-main input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]),
+html[data-theme="light"] .admin-main select,
+html[data-theme="light"] .admin-main textarea {
+  background-color: #fff;
+  color: #1a1014;
+}
